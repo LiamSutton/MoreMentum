@@ -955,8 +955,8 @@ GameObject:
   m_Component:
   - component: {fileID: 795507037}
   m_Layer: 8
-  m_Name: SoundTriggers
-  m_TagString: Untagged
+  m_Name: VoiceLineTriggers
+  m_TagString: Manager
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4566,7 +4566,7 @@ GameObject:
   - component: {fileID: 1687194452}
   m_Layer: 8
   m_Name: TEST_01
-  m_TagString: Untagged
+  m_TagString: VoiceTrigger
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4814,7 +4814,7 @@ GameObject:
   - component: {fileID: 2008420540}
   m_Layer: 8
   m_Name: TEST_01 (1)
-  m_TagString: Untagged
+  m_TagString: VoiceTrigger
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
