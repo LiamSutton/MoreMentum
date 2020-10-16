@@ -29,15 +29,18 @@ public class PlayerController : MonoBehaviour
     private float threshold = 0.01f;
 
     private bool isReadyToJump = true;
+    public bool isReadyToDash = true;
 
     private float jumpCooldown = 0.25f;
     public float jumpForce = 550f;
-
+    public float dashForce = 550f;
+    public float dashDuration = 0.25f;
     public float maxSlopeAngle = 45f;
     float xMov, yMov;
 
-    public bool isJumping;
+    public bool isJumping, isDashing;
 
+    public bool dashExecuting;
     private Vector3 normalVector = Vector3.up;
 
     public Material interactable;
@@ -66,6 +69,7 @@ public class PlayerController : MonoBehaviour
         xMov = Input.GetAxisRaw("Horizontal");
         yMov = Input.GetAxisRaw("Vertical");
         isJumping = Input.GetButton("Jump");
+        isDashing = Input.GetKey(KeyCode.LeftShift);
     }
 
     private void MovePlayer()
@@ -81,6 +85,11 @@ public class PlayerController : MonoBehaviour
         ApplyCounterMovement(xMov, yMov, magnitude);
 
         if (isReadyToJump && isJumping) Jump();
+
+        if ((isReadyToDash && isDashing) || dashExecuting)
+        {
+            StartCoroutine("Dash");
+        }
 
         float maxSpeed = this.maxSpeed;
 
@@ -193,6 +202,7 @@ public class PlayerController : MonoBehaviour
             if (IsFloor(normal))
             {
                 isGrounded = true;
+                ResetDash();
                 isCancellingGrounded = false;
                 normalVector = normal;
                 CancelInvoke(nameof(StopGrounded));
@@ -211,8 +221,23 @@ public class PlayerController : MonoBehaviour
     {
         isReadyToJump = true;
     }
+
+    private void ResetDash()
+    {
+        isReadyToDash = true;
+    }
     private void StopGrounded()
     {
         isGrounded = false;
+    }
+
+    private IEnumerator Dash()
+    {
+        dashExecuting = true;
+        isReadyToDash = false;
+        rb.AddForce(playerCamera.transform.forward * dashForce, ForceMode.VelocityChange);
+        yield return new WaitForSeconds(dashDuration);
+        rb.velocity = Vector3.zero;
+        dashExecuting = false;
     }
 }
