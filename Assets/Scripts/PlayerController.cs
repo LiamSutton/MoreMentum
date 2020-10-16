@@ -45,12 +45,15 @@ public class PlayerController : MonoBehaviour
 
     public Material interactable;
 
+    public AudioClip dashAudio;
+
     private void Awake() => rb = GetComponent<Rigidbody>();
 
     private void Start()
     {
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
+        dashAudio = GetComponent<AudioSource>().clip;
     }
 
     private void FixedUpdate()
@@ -88,6 +91,10 @@ public class PlayerController : MonoBehaviour
 
         if ((isReadyToDash && isDashing) || dashExecuting)
         {
+            if (!GetComponent<AudioSource>().isPlaying)
+            {
+                GetComponent<AudioSource>().PlayOneShot(dashAudio, 0.8f);
+            }
             StartCoroutine("Dash");
         }
 
@@ -236,7 +243,7 @@ public class PlayerController : MonoBehaviour
         dashExecuting = true;
         isReadyToDash = false;
         rb.AddForce(playerCamera.transform.forward * dashForce, ForceMode.VelocityChange);
-        yield return new WaitForSeconds(dashDuration);
+        yield return new WaitForSecondsRealtime(dashDuration);
         rb.velocity = Vector3.zero;
         dashExecuting = false;
     }
