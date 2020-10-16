@@ -4,9 +4,13 @@ using UnityEngine;
 
 public class VoiceLineTrigger : MonoBehaviour
 {
-    public AudioClip voiceLine;
-    public bool isCurrenltyPlaying; 
+    private AudioClip voiceLine;
+    public bool isCurrenltyPlaying;
 
+    public void Awake()
+    {
+        voiceLine = GetComponent<AudioSource>().clip;
+    }
     // When the player enters the trigger, play the voice line associated with it.
     public void OnTriggerEnter(Collider other)
     {
@@ -21,15 +25,21 @@ public class VoiceLineTrigger : MonoBehaviour
         GetComponent<Collider>().enabled = false;
     }
 
-    public IEnumerator PlayVoiceLine() {
+    public IEnumerator PlayVoiceLine()
+    {
         isCurrenltyPlaying = true;
         GetComponent<AudioSource>().PlayOneShot(voiceLine);
         yield return new WaitWhile(() => GetComponent<AudioSource>().isPlaying);
         isCurrenltyPlaying = false;
     }
 
-    public void StopVoiceLine() {
+    public void StopVoiceLine()
+    {
         Debug.Log("STOPPING PLAYBACK FOR " + voiceLine.name + " AT: " + Time.time);
         GetComponent<AudioSource>().Stop();
+    }
+
+    public AudioClip GetVoiceLine() {
+        return voiceLine;
     }
 }

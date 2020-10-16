@@ -16,7 +16,7 @@ public class VoiceLineManager : MonoBehaviour
         foreach (VoiceLineTrigger trig in children)
         {
             if (trig.isCurrenltyPlaying) {
-                Debug.Log(trig.voiceLine.name + " IS CURRENTLY PLAYING  AT: " + Time.time);
+                Debug.Log(trig.GetVoiceLine().name + " IS CURRENTLY PLAYING  AT: " + Time.time);
                 trig.StopVoiceLine();
             }
         }
