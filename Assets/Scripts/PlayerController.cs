@@ -159,8 +159,9 @@ public class PlayerController : MonoBehaviour
 
         float shortestAngle = Mathf.DeltaAngle(lookAngle, movementAngle);
         float v = 90f - shortestAngle;
+        
+        float magnitude = new Vector3(rb.velocity.x, 0, rb.velocity.z).magnitude;
 
-        float magnitude = rb.velocity.magnitude;
         float yMagnitude = magnitude * Mathf.Cos(shortestAngle * Mathf.Deg2Rad);
         float xMagnitude = magnitude * Mathf.Cos(v * Mathf.Deg2Rad);
 
