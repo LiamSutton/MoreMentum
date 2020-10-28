@@ -40,7 +40,7 @@ public class PlayerController : MonoBehaviour
 
     public bool isJumping, isDashing;
 
-    public bool dashExecuting;
+    public bool dashExecuting = false;
     private Vector3 normalVector = Vector3.up;
 
     public Material interactable;
@@ -72,7 +72,8 @@ public class PlayerController : MonoBehaviour
         xMov = Input.GetAxisRaw("Horizontal");
         yMov = Input.GetAxisRaw("Vertical");
         isJumping = Input.GetButton("Jump");
-        isDashing = Input.GetKey(KeyCode.LeftShift);
+        // Using get key causes the sound + dash spam
+        isDashing = Input.GetKeyDown(KeyCode.LeftShift);
     }
 
     private void MovePlayer()
@@ -88,16 +89,12 @@ public class PlayerController : MonoBehaviour
         ApplyCounterMovement(xMov, yMov, magnitude);
 
         if (isReadyToJump && isJumping) Jump();
-
-        if ((isReadyToDash && isDashing) || dashExecuting)
-        {
-            if (!GetComponent<AudioSource>().isPlaying)
-            {
-                GetComponent<AudioSource>().PlayOneShot(dashAudio, 0.8f);
-            }
-            StartCoroutine("Dash");
+        if (isDashing) {
+            Debug.Log("Trying to dash at: " + Time.time.ToString());
         }
-
+        if (isReadyToDash && isDashing) {
+                StartCoroutine(Dash());
+            }
         float maxSpeed = this.maxSpeed;
 
         // If speed on any axis is greater than maxSpeed, cancel the input
@@ -138,7 +135,7 @@ public class PlayerController : MonoBehaviour
 
     private void ApplyCounterMovement(float xMov, float yMov, Vector2 magnitude)
     {
-        // TODO: add jumping check
+
         if (!isGrounded) return;
 
         if (Mathf.Abs(magnitude.x) > threshold && Mathf.Abs(xMov) < 0.05f || (magnitude.x < -threshold && xMov > 0) || (magnitude.x > threshold && xMov < 0))
@@ -171,6 +168,7 @@ public class PlayerController : MonoBehaviour
         if (isGrounded && isReadyToJump)
         {
             isReadyToJump = false;
+            
 
             rb.AddForce(Vector2.up * jumpForce * 1.5f);
             rb.AddForce(normalVector * jumpForce * 0.5f);
@@ -224,6 +222,19 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    // private void OnCollisionEnter(Collision other) {
+    //         if (other.gameObject.layer.Equals(8)) {
+    //             isGrounded = true;
+    //             isReadyToDash = true;
+    //         }
+    // }
+
+    // private void OnCollisionExit(Collision other) {
+    //     if (other.gameObject.CompareTag("Ground")) {
+    //         isGrounded = false;
+    //     }
+    // }
+
     private void ResetJump()
     {
         isReadyToJump = true;
@@ -240,11 +251,12 @@ public class PlayerController : MonoBehaviour
 
     private IEnumerator Dash()
     {
-        dashExecuting = true;
-        isReadyToDash = false;
         rb.AddForce(playerCamera.transform.forward * dashForce, ForceMode.VelocityChange);
-        yield return new WaitForSecondsRealtime(dashDuration);
+        GetComponent<AudioSource>().PlayOneShot(dashAudio, 0.8f);
+        yield return new WaitForSeconds(dashDuration);
         rb.velocity = Vector3.zero;
-        dashExecuting = false;
+
+        isReadyToDash = false;
+        yield return new WaitForSeconds(dashDuration);
     }
 }
