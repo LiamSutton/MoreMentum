@@ -2,16 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-/*
-    Author: Liam Sutton
-    
-    This character controller is based from Dani's first person character controller tutorial
- */
+
 public class PlayerController : MonoBehaviour
 {
     public Transform playerCamera;
     public Transform playerOrientation;
-
     private Rigidbody rb;
     private float xRotation;
     private float mouseSensitivity = 50f;
@@ -20,47 +15,30 @@ public class PlayerController : MonoBehaviour
     public float moveSpeed = 4500f;
     public float maxSpeed = 20f;
 
-    public float maxTeleporterDistance = 20f;
     public bool isGrounded;
 
-    private bool isCancellingGrounded;
-    public LayerMask whatIsGround;
     public float counterMovementStrength = 0.175f;
     private float threshold = 0.01f;
 
-    private bool isReadyToJump = true;
-    public bool isReadyToDash = true;
-
-    private float jumpCooldown = 0.25f;
-    public float jumpForce = 550f;
-    public float dashForce = 550f;
-    public float dashDuration = 0.25f;
-    public float dashCooldown = 0.5f;
-    public float maxSlopeAngle = 45f;
     float xMov, yMov;
 
-    public bool isJumping, isDashing;
-
-    public bool dashExecuting = false;
-    private Vector3 normalVector = Vector3.up;
-
-    public Material interactable;
+    private float desiredX;
 
     public AudioClip dashAudio;
 
     // Reference to player scripts
     DashController dashController;
+    JumpController jumpController;
 
-    private void Awake() {
+    private void Awake()
+    {
         rb = GetComponent<Rigidbody>();
         dashController = GetComponent<DashController>();
-    }
+        jumpController = GetComponent<JumpController>();
+        dashAudio = GetComponent<AudioSource>().clip;
 
-    private void Start()
-    {
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
-        dashAudio = GetComponent<AudioSource>().clip;
     }
 
     private void FixedUpdate()
@@ -72,18 +50,12 @@ public class PlayerController : MonoBehaviour
     {
         GetPlayerInput();
         MoveCamera();
-        // if (Input.GetKeyDown(KeyCode.LeftShift)) {
-        //     if (isReadyToDash) {
-        //         StartCoroutine("Dash");
-        //     }
-        // }
     }
 
     private void GetPlayerInput()
     {
         xMov = Input.GetAxisRaw("Horizontal");
         yMov = Input.GetAxisRaw("Vertical");
-        isJumping = Input.GetButton("Jump");
     }
 
     private void MovePlayer()
@@ -98,7 +70,6 @@ public class PlayerController : MonoBehaviour
         // Apply counter movement to prevent unity from ruining the game
         ApplyCounterMovement(xMov, yMov, magnitude);
 
-        if (isReadyToJump && isJumping) Jump();
         float maxSpeed = this.maxSpeed;
 
         // If speed on any axis is greater than maxSpeed, cancel the input
@@ -121,7 +92,6 @@ public class PlayerController : MonoBehaviour
         rb.AddForce(playerOrientation.transform.right * xMov * moveSpeed * Time.deltaTime * multiplier);
     }
 
-    private float desiredX;
     private void MoveCamera()
     {
         float mouseX = Input.GetAxis("Mouse X") * mouseSensitivity * Time.fixedDeltaTime * sensitivityMultiplier;
@@ -159,7 +129,7 @@ public class PlayerController : MonoBehaviour
 
         float shortestAngle = Mathf.DeltaAngle(lookAngle, movementAngle);
         float v = 90f - shortestAngle;
-        
+
         float magnitude = new Vector3(rb.velocity.x, 0, rb.velocity.z).magnitude;
 
         float yMagnitude = magnitude * Mathf.Cos(shortestAngle * Mathf.Deg2Rad);
@@ -168,77 +138,34 @@ public class PlayerController : MonoBehaviour
         return new Vector2(xMagnitude, yMagnitude);
     }
 
-    private void Jump()
+    private void OnCollisionEnter(Collision other)
     {
-        if (isGrounded && isReadyToJump)
+
+        // Is Grounded
+        if (other.gameObject.CompareTag("Ground"))
         {
-            isReadyToJump = false;
-            
+            dashController.SendMessage("ResetDash");
+            dashController.SendMessage("ResetGrounded");
+            jumpController.SendMessage("ResetGrounded");
+            jumpController.SendMessage("ResetJump");
+            isGrounded = true;
 
-            rb.AddForce(Vector2.up * jumpForce * 1.5f);
-            rb.AddForce(normalVector * jumpForce * 0.5f);
-
-            Vector3 velocity = rb.velocity;
-            if (rb.velocity.y < 0.5f)
-            {
-                rb.velocity = new Vector3(velocity.x, 0f, velocity.z);
-            }
-            else if (rb.velocity.y > 0)
-            {
-                rb.velocity = new Vector3(velocity.x, velocity.y / 2, velocity.z);
-            }
-
-            Invoke(nameof(ResetJump), jumpCooldown);
+        }
+        else
+        {
+            Debug.Log(other.gameObject.layer.ToString());
         }
     }
 
-    private bool IsFloor(Vector3 vector)
+    private void OnCollisionExit(Collision other)
     {
-        float angle = Vector3.Angle(Vector3.up, vector);
-        return angle < maxSlopeAngle;
-    }
-
-    // TODO: understand some of this shit
-    private void OnCollisionStay(Collision other)
-    {
-        int layer = other.gameObject.layer;
-        if (whatIsGround != (whatIsGround | (1 << layer))) return;
-
-        // Iterate over every collision in a physics update
-        for (int i = 0; i < other.contactCount; i++)
+        if (other.gameObject.CompareTag("Ground"))
         {
-            Vector3 normal = other.contacts[i].normal;
-
-            if (IsFloor(normal))
-            {
-                isGrounded = true;
-                dashController.SendMessage("ResetDash");
-                isCancellingGrounded = false;
-                normalVector = normal;
-                CancelInvoke(nameof(StopGrounded));
-            }
+            // Player has left the grounded state
+            // TODO: definitally a better way to do this... maybe with subclassing or an interface?
+            isGrounded = false;
+            jumpController.SendMessage("LeftGround");
+            dashController.SendMessage("LeftGround");
         }
-
-        float delay = 3f;
-        if (!isCancellingGrounded)
-        {
-            isCancellingGrounded = true;
-            Invoke(nameof(StopGrounded), Time.deltaTime * delay);
-        }
-    }
-
-    private void ResetJump()
-    {
-        isReadyToJump = true;
-    }
-
-    private void ResetDash()
-    {
-        isReadyToDash = true;
-        GameObject.Find("HUD").GetComponent<UIController>().text.enabled = true;
-    }
-    private void StopGrounded()
-    {
-        isGrounded = false;
     }
 }

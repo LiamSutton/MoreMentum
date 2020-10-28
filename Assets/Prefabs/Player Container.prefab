@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 6989594148790817528}
   - component: {fileID: 6989594148790817531}
   - component: {fileID: 6989594148790817532}
+  - component: {fileID: 9134927917762183087}
   - component: {fileID: 6028953295565333358}
   m_Layer: 0
   m_Name: Player
@@ -148,6 +149,22 @@ MonoBehaviour:
   dashExecuting: 0
   interactable: {fileID: 0}
   dashAudio: {fileID: 0}
+--- !u!114 &9134927917762183087
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6989594148790817525}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 40f7fb69f69908249b747343e6a4320a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  canJump: 0
+  jumpForce: 550
+  jumpCooldown: 0.25
+  isGrounded: 0
 --- !u!114 &6028953295565333358
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -165,6 +182,7 @@ MonoBehaviour:
   dashDuration: 0.25
   dashCooldown: 0.5
   dashAudio: {fileID: 0}
+  isReadyToDash: 0
 --- !u!1 &6989594149034023369
 GameObject:
   m_ObjectHideFlags: 0

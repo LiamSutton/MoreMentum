@@ -12,6 +12,8 @@ public class DashController : MonoBehaviour
     public AudioClip dashAudio;
     private Rigidbody rb;
 
+    public bool isGrounded;
+
     public bool isReadyToDash;
     void Awake() => rb = GetComponent<Rigidbody>();
 
@@ -27,18 +29,32 @@ public class DashController : MonoBehaviour
 
     private IEnumerator Dash()
     {
-        
+        isReadyToDash = false;
+        Debug.Log("DISSABLED DASH FROM CO-ROUTINE AT: " + Time.time.ToString());
         rb.velocity = Vector3.zero;
         rb.AddForce(playerCamera.transform.forward * dashForce, ForceMode.VelocityChange);
         GetComponent<AudioSource>().PlayOneShot(dashAudio, 0.8f);
         yield return new WaitForSeconds(dashDuration);
         rb.velocity = Vector3.zero;
-
-        isReadyToDash = false;
         yield return new WaitForSeconds(dashCooldown);
+
+        // If the player is grounded after waiting the cooldown duration, chances are they performed
+        // a ground dash, so re-enable dash
+          if (isGrounded) {
+            ResetDash();
+        }
     }
 
     private void ResetDash() {
         isReadyToDash = true;
+        Debug.Log("RE-ENABLED DASH FROM RESETDASH AT: " + Time.time.ToString());
+    }
+
+    private void ResetGrounded() {
+        isGrounded = true;
+    }
+
+    private void LeftGround() {
+        isGrounded = false;
     }
 }
