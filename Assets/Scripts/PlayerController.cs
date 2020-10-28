@@ -35,6 +35,7 @@ public class PlayerController : MonoBehaviour
     public float jumpForce = 550f;
     public float dashForce = 550f;
     public float dashDuration = 0.25f;
+    public float dashCooldown = 0.5f;
     public float maxSlopeAngle = 45f;
     float xMov, yMov;
 
@@ -47,7 +48,13 @@ public class PlayerController : MonoBehaviour
 
     public AudioClip dashAudio;
 
-    private void Awake() => rb = GetComponent<Rigidbody>();
+    // Reference to player scripts
+    DashController dashController;
+
+    private void Awake() {
+        rb = GetComponent<Rigidbody>();
+        dashController = GetComponent<DashController>();
+    }
 
     private void Start()
     {
@@ -65,6 +72,11 @@ public class PlayerController : MonoBehaviour
     {
         GetPlayerInput();
         MoveCamera();
+        // if (Input.GetKeyDown(KeyCode.LeftShift)) {
+        //     if (isReadyToDash) {
+        //         StartCoroutine("Dash");
+        //     }
+        // }
     }
 
     private void GetPlayerInput()
@@ -72,8 +84,6 @@ public class PlayerController : MonoBehaviour
         xMov = Input.GetAxisRaw("Horizontal");
         yMov = Input.GetAxisRaw("Vertical");
         isJumping = Input.GetButton("Jump");
-        // Using get key causes the sound + dash spam
-        isDashing = Input.GetKeyDown(KeyCode.LeftShift);
     }
 
     private void MovePlayer()
@@ -89,12 +99,6 @@ public class PlayerController : MonoBehaviour
         ApplyCounterMovement(xMov, yMov, magnitude);
 
         if (isReadyToJump && isJumping) Jump();
-        if (isDashing) {
-            Debug.Log("Trying to dash at: " + Time.time.ToString());
-        }
-        if (isReadyToDash && isDashing) {
-                StartCoroutine(Dash());
-            }
         float maxSpeed = this.maxSpeed;
 
         // If speed on any axis is greater than maxSpeed, cancel the input
@@ -207,7 +211,7 @@ public class PlayerController : MonoBehaviour
             if (IsFloor(normal))
             {
                 isGrounded = true;
-                ResetDash();
+                dashController.SendMessage("ResetDash");
                 isCancellingGrounded = false;
                 normalVector = normal;
                 CancelInvoke(nameof(StopGrounded));
@@ -222,19 +226,6 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    // private void OnCollisionEnter(Collision other) {
-    //         if (other.gameObject.layer.Equals(8)) {
-    //             isGrounded = true;
-    //             isReadyToDash = true;
-    //         }
-    // }
-
-    // private void OnCollisionExit(Collision other) {
-    //     if (other.gameObject.CompareTag("Ground")) {
-    //         isGrounded = false;
-    //     }
-    // }
-
     private void ResetJump()
     {
         isReadyToJump = true;
@@ -243,20 +234,10 @@ public class PlayerController : MonoBehaviour
     private void ResetDash()
     {
         isReadyToDash = true;
+        GameObject.Find("HUD").GetComponent<UIController>().text.enabled = true;
     }
     private void StopGrounded()
     {
         isGrounded = false;
-    }
-
-    private IEnumerator Dash()
-    {
-        rb.AddForce(playerCamera.transform.forward * dashForce, ForceMode.VelocityChange);
-        GetComponent<AudioSource>().PlayOneShot(dashAudio, 0.8f);
-        yield return new WaitForSeconds(dashDuration);
-        rb.velocity = Vector3.zero;
-
-        isReadyToDash = false;
-        yield return new WaitForSeconds(dashDuration);
     }
 }
