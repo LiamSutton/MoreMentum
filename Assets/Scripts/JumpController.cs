@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class JumpController : MonoBehaviour
 {
@@ -10,6 +11,11 @@ public class JumpController : MonoBehaviour
     public float jumpForce = 550f;
     public float jumpCooldown = 0.25f;
     public bool isGrounded;
+
+    public Image JumpUI;
+
+    public Color JumpEnabled;
+    public Color JumpDisabled;
     void Start()
     {
         rb = GetComponent<Rigidbody>();
@@ -25,8 +31,11 @@ public class JumpController : MonoBehaviour
         }
     }
 
-    public void Jump() {
-        if (isGrounded && canJump) {
+    public void Jump()
+    {
+        if (isGrounded && canJump)
+        {
+            JumpUI.color = JumpDisabled;
             canJump = false;
             rb.AddForce(Vector2.up * jumpForce * 1.5f);
 
@@ -44,13 +53,17 @@ public class JumpController : MonoBehaviour
 
     private void ResetJump()
     {
+        JumpUI.color = JumpEnabled;
         canJump = true;
     }
-    
-    private void LeftGround() {
+
+    private void LeftGround()
+    {
+        JumpUI.color = JumpDisabled;
         isGrounded = false;
     }
-    private void ResetGrounded() {
+    private void ResetGrounded()
+    {
         isGrounded = true;
     }
 }

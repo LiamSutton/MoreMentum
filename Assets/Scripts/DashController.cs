@@ -36,10 +36,9 @@ public class DashController : MonoBehaviour
     private IEnumerator Dash()
     {
         dashUI.color = dashDisabled;
-        // dashUI.enabled = false;   
         isReadyToDash = false;
         rb.velocity = Vector3.zero;
-        dashParticles.Play();
+        
         rb.AddForce(playerCamera.transform.forward * dashForce, ForceMode.VelocityChange);
         GetComponent<AudioSource>().PlayOneShot(dashAudio, 0.8f);
         yield return new WaitForSeconds(dashDuration);
@@ -64,5 +63,9 @@ public class DashController : MonoBehaviour
 
     private void LeftGround() {
         isGrounded = false;
+    }
+
+    private void PositionParticles() {
+    
     }
 }
