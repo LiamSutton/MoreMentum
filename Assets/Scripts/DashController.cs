@@ -19,6 +19,8 @@ public class DashController : MonoBehaviour
     public bool isReadyToDash;
 
     public Image dashUI;
+    public Color dashEnabled;
+    public Color dashDisabled;
     void Awake() => rb = GetComponent<Rigidbody>();
 
     void Update()
@@ -33,7 +35,8 @@ public class DashController : MonoBehaviour
 
     private IEnumerator Dash()
     {
-        dashUI.enabled = false;   
+        dashUI.color = dashDisabled;
+        // dashUI.enabled = false;   
         isReadyToDash = false;
         rb.velocity = Vector3.zero;
         dashParticles.Play();
@@ -52,7 +55,7 @@ public class DashController : MonoBehaviour
 
     private void ResetDash() {
         isReadyToDash = true;
-        dashUI.enabled = true;
+        dashUI.color = dashEnabled;
     }
 
     private void ResetGrounded() {
