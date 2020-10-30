@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class DashController : MonoBehaviour
 {
@@ -10,11 +11,14 @@ public class DashController : MonoBehaviour
 
     public float dashCooldown = 0.5f;
     public AudioClip dashAudio;
+    public ParticleSystem dashParticles;
     private Rigidbody rb;
 
     public bool isGrounded;
 
     public bool isReadyToDash;
+
+    public TMP_Text dashUI;
     void Awake() => rb = GetComponent<Rigidbody>();
 
     void Update()
@@ -29,9 +33,10 @@ public class DashController : MonoBehaviour
 
     private IEnumerator Dash()
     {
+        dashUI.enabled = false;
         isReadyToDash = false;
-        Debug.Log("DISSABLED DASH FROM CO-ROUTINE AT: " + Time.time.ToString());
         rb.velocity = Vector3.zero;
+        dashParticles.Play();
         rb.AddForce(playerCamera.transform.forward * dashForce, ForceMode.VelocityChange);
         GetComponent<AudioSource>().PlayOneShot(dashAudio, 0.8f);
         yield return new WaitForSeconds(dashDuration);
@@ -47,7 +52,7 @@ public class DashController : MonoBehaviour
 
     private void ResetDash() {
         isReadyToDash = true;
-        Debug.Log("RE-ENABLED DASH FROM RESETDASH AT: " + Time.time.ToString());
+        dashUI.enabled = true;
     }
 
     private void ResetGrounded() {
