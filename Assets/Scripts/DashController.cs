@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using TMPro;
+using UnityEngine.UI;
 
 public class DashController : MonoBehaviour
 {
@@ -18,7 +18,7 @@ public class DashController : MonoBehaviour
 
     public bool isReadyToDash;
 
-    public TMP_Text dashUI;
+    public Image dashUI;
     void Awake() => rb = GetComponent<Rigidbody>();
 
     void Update()
@@ -33,7 +33,7 @@ public class DashController : MonoBehaviour
 
     private IEnumerator Dash()
     {
-        dashUI.enabled = false;
+        dashUI.enabled = false;   
         isReadyToDash = false;
         rb.velocity = Vector3.zero;
         dashParticles.Play();
