@@ -7,6 +7,7 @@ TagManager:
   - Manager
   - VoiceTrigger
   - Ground
+  - Teleporter
   layers:
   - Default
   - TransparentFX
