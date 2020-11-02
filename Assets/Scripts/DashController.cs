@@ -18,9 +18,9 @@ public class DashController : MonoBehaviour
 
     public bool isReadyToDash;
 
-    public Image dashUI;
-    public Color dashEnabled;
-    public Color dashDisabled;
+        public Image dashUI;
+        public Color dashEnabled;
+        public Color dashDisabled;
     void Awake() => rb = GetComponent<Rigidbody>();
 
     void Update()

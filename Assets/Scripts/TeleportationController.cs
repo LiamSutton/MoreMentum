@@ -43,7 +43,7 @@ public class TeleportationController : MonoBehaviour
         TeleportUI.color = teleportDisabled;
         isReadyToTeleport = false;
         rb.velocity = Vector3.zero;
-        transform.position = location.transform.position;
+        transform.position = location.transform.position + Vector3.up * 2f;
         dashController.SendMessage("ResetDash");
         rb.AddForce(Vector3.up * teleporterForce * 3f);
         yield return new WaitForSeconds(teleportCooldown);
