@@ -20,7 +20,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Teleporter Material
+  m_Name: Teleporter Material 1
   m_Shader: {fileID: -6465566751694194690, guid: 1f31898632cc8204ca70859b1297127d,
     type: 3}
   m_ShaderKeywords: 

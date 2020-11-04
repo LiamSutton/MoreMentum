@@ -20,8 +20,8 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Teleport Highlighted Material
-  m_Shader: {fileID: -6465566751694194690, guid: 1f31898632cc8204ca70859b1297127d,
+  m_Name: Pickup Material
+  m_Shader: {fileID: -6465566751694194690, guid: 7695e4f741eefd6469c59d8bf7a9e7db,
     type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 2
@@ -87,7 +87,7 @@ Material:
     - _WorkflowMode: 1
     - _ZWrite: 1
     m_Colors:
-    - Color_29B5ECC: {r: 3.3254902, g: 0.83137256, b: 0, a: 1}
+    - Color_29B5ECC: {r: 3.6392157, g: 0.5647059, b: 3.5764706, a: 1}
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}

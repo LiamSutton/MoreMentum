@@ -9,12 +9,14 @@ public class TeleporterController : MonoBehaviour
 
     private Renderer renderer;
 
-    public Transform playerPosition;
+    private Transform playerPosition;
 
     void Awake()
     {
         renderer = GetComponent<Renderer>();
         renderer.material = baseMaterial;
+        playerPosition = GameObject.Find("Head").transform;
+        Debug.Log(playerPosition.ToString());
     }
 
     // Update is called once per frame
