@@ -25,6 +25,7 @@ public class DashController : MonoBehaviour
 
     void Update()
     {
+        PositionParticles();
         if (Input.GetKeyDown(KeyCode.LeftShift))
         {
             if (isReadyToDash) {
@@ -40,6 +41,7 @@ public class DashController : MonoBehaviour
         rb.velocity = Vector3.zero;
         
         rb.AddForce(playerCamera.transform.forward * dashForce, ForceMode.VelocityChange);
+        dashParticles.Play();
         GetComponent<AudioSource>().PlayOneShot(dashAudio, 0.8f);
         yield return new WaitForSeconds(dashDuration);
         rb.velocity = Vector3.zero;
@@ -66,6 +68,6 @@ public class DashController : MonoBehaviour
     }
 
     private void PositionParticles() {
-    
+        dashParticles.transform.rotation = playerCamera.transform.rotation;
     }
 }
