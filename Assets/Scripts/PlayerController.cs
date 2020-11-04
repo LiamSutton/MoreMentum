@@ -30,11 +30,14 @@ public class PlayerController : MonoBehaviour
     DashController dashController;
     JumpController jumpController;
 
+    public PickupManager pickupManager;
+
     private void Awake()
     {
         rb = GetComponent<Rigidbody>();
         dashController = GetComponent<DashController>();
         jumpController = GetComponent<JumpController>();
+        pickupManager = GameObject.Find("Pickup Manager").GetComponent<PickupManager>();
         dashAudio = GetComponent<AudioSource>().clip;
 
         Cursor.lockState = CursorLockMode.Locked;
@@ -148,6 +151,7 @@ public class PlayerController : MonoBehaviour
             dashController.SendMessage("ResetGrounded");
             jumpController.SendMessage("ResetGrounded");
             jumpController.SendMessage("ResetJump");
+            pickupManager.SendMessage("ResetAllPickups");
             isGrounded = true;
 
         }
@@ -166,6 +170,13 @@ public class PlayerController : MonoBehaviour
             isGrounded = false;
             jumpController.SendMessage("LeftGround");
             dashController.SendMessage("LeftGround");
+        }
+    }
+
+    private void OnTriggerEnter(Collider other) {
+        if (other.gameObject.CompareTag("Pickup")) {
+            pickupManager.SendMessage("Pickup", other.gameObject);
+            dashController.SendMessage("ResetDash");
         }
     }
 }
