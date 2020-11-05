@@ -30,6 +30,8 @@ public class PlayerController : MonoBehaviour
     DashController dashController;
     JumpController jumpController;
 
+    SfxPlayer sfxPlayer;
+
     public PickupManager pickupManager;
 
     private void Awake()
@@ -37,6 +39,7 @@ public class PlayerController : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         dashController = GetComponent<DashController>();
         jumpController = GetComponent<JumpController>();
+        sfxPlayer = GetComponent<SfxPlayer>();
         pickupManager = GameObject.Find("Pickup Manager").GetComponent<PickupManager>();
         dashAudio = GetComponent<AudioSource>().clip;
 
@@ -93,6 +96,9 @@ public class PlayerController : MonoBehaviour
 
         rb.AddForce(playerOrientation.transform.forward * yMov * moveSpeed * Time.deltaTime * multiplier * multiplierV);
         rb.AddForce(playerOrientation.transform.right * xMov * moveSpeed * Time.deltaTime * multiplier);
+        if (isGrounded && xMagnitude != 0) {
+            sfxPlayer.SendMessage("PlayFootsteps");
+        }
     }
 
     private void MoveCamera()

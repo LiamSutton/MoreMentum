@@ -11,6 +11,7 @@ public class DashController : MonoBehaviour
 
     public float dashCooldown = 0.5f;
     public AudioClip dashAudio;
+    public AudioSource audioSource;
     public ParticleSystem dashParticles;
     private Rigidbody rb;
 
@@ -21,7 +22,10 @@ public class DashController : MonoBehaviour
         public Image dashUI;
         public Color dashEnabled;
         public Color dashDisabled;
-    void Awake() => rb = GetComponent<Rigidbody>();
+    void Awake() {
+        rb = GetComponent<Rigidbody>();
+        audioSource = GetComponent<AudioSource>();
+    } 
 
     void Update()
     {
@@ -42,7 +46,7 @@ public class DashController : MonoBehaviour
         
         rb.AddForce(playerCamera.transform.forward * dashForce, ForceMode.VelocityChange);
         dashParticles.Play();
-        GetComponent<AudioSource>().PlayOneShot(dashAudio, 0.8f);
+        audioSource.PlayOneShot(dashAudio, 0.8f);
         yield return new WaitForSeconds(dashDuration);
         rb.velocity = Vector3.zero;
         yield return new WaitForSeconds(dashCooldown);
