@@ -24,4 +24,8 @@ public class SfxPlayer : MonoBehaviour
         }
         
     }
+
+    void PlayTeleportSound() {
+
+    }
 }

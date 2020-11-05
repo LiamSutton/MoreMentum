@@ -15,10 +15,14 @@ public class TeleportationController : MonoBehaviour
     public Color teleportEnabled;
     public Color teleportDisabled;
     private DashController dashController;
+
+    public AudioClip teleportAudio;
+    public AudioSource audioSource;
     void Awake()
     {
         rb = GetComponent<Rigidbody>();
         dashController = GetComponent<DashController>();
+        audioSource = GetComponent<AudioSource>();
     }
 
     void Update()
@@ -44,6 +48,7 @@ public class TeleportationController : MonoBehaviour
         isReadyToTeleport = false;
         rb.velocity = Vector3.zero;
         transform.position = location.transform.position + Vector3.up * 2f;
+        audioSource.PlayOneShot(teleportAudio, 1);
         dashController.SendMessage("ResetDash");
         rb.AddForce(Vector3.up * teleporterForce * 3f);
         yield return new WaitForSeconds(teleportCooldown);

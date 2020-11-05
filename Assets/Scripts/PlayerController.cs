@@ -96,7 +96,7 @@ public class PlayerController : MonoBehaviour
 
         rb.AddForce(playerOrientation.transform.forward * yMov * moveSpeed * Time.deltaTime * multiplier * multiplierV);
         rb.AddForce(playerOrientation.transform.right * xMov * moveSpeed * Time.deltaTime * multiplier);
-        if (isGrounded && xMagnitude != 0) {
+        if (isGrounded && (xMov != 0 || yMov != 0)) {
             sfxPlayer.SendMessage("PlayFootsteps");
         }
     }
