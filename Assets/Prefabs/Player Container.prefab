@@ -46,7 +46,7 @@ ParticleSystem:
   cullingMode: 0
   ringBufferMode: 0
   ringBufferLoopRange: {x: 0, y: 1}
-  looping: 1
+  looping: 0
   prewarm: 0
   playOnAwake: 0
   useUnscaledTime: 0
@@ -4954,6 +4954,8 @@ MonoBehaviour:
   TeleportUI: {fileID: 0}
   teleportEnabled: {r: 0, g: 0, b: 0, a: 0}
   teleportDisabled: {r: 0, g: 0, b: 0, a: 0}
+  teleportAudio: {fileID: 0}
+  audioSource: {fileID: 0}
 --- !u!114 &4376947656153199639
 MonoBehaviour:
   m_ObjectHideFlags: 0
