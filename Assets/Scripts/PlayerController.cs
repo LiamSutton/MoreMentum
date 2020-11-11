@@ -23,7 +23,6 @@ public class PlayerController : MonoBehaviour
     float xMov, yMov;
 
     private float desiredX;
-
     public AudioClip dashAudio;
 
     // Reference to player scripts
