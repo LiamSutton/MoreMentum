@@ -9,6 +9,7 @@ TagManager:
   - Ground
   - Teleporter
   - Pickup
+  - Gun
   layers:
   - Default
   - TransparentFX

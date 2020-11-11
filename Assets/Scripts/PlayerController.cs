@@ -17,6 +17,8 @@ public class PlayerController : MonoBehaviour
 
     public bool isGrounded;
 
+    public bool hasGun = true;
+
     public float counterMovementStrength = 0.175f;
     private float threshold = 0.01f;
 
@@ -29,18 +31,27 @@ public class PlayerController : MonoBehaviour
     DashController dashController;
     JumpController jumpController;
 
+    TeleportationController teleportationController;
+    public GameObject Gun;
     SfxPlayer sfxPlayer;
 
     public PickupManager pickupManager;
+
+    public UIController uiController;
 
     private void Awake()
     {
         rb = GetComponent<Rigidbody>();
         dashController = GetComponent<DashController>();
         jumpController = GetComponent<JumpController>();
+        teleportationController = GetComponent<TeleportationController>();
+        uiController = GetComponent<UIController>();
         sfxPlayer = GetComponent<SfxPlayer>();
         pickupManager = GameObject.Find("Pickup Manager").GetComponent<PickupManager>();
         dashAudio = GetComponent<AudioSource>().clip;
+        
+
+        InitialiseGunState();
 
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
@@ -160,10 +171,6 @@ public class PlayerController : MonoBehaviour
             isGrounded = true;
 
         }
-        else
-        {
-            Debug.Log(other.gameObject.layer.ToString());
-        }
     }
 
     private void OnCollisionExit(Collision other)
@@ -183,5 +190,27 @@ public class PlayerController : MonoBehaviour
             pickupManager.SendMessage("Pickup", other.gameObject);
             dashController.SendMessage("ResetDash");
         }
+
+        if (other.gameObject.CompareTag("Gun")) {
+            Destroy(other.gameObject);
+            GunPickedUp();
+        }
+    }
+
+    private void InitialiseGunState() {
+        Gun.SetActive(hasGun);
+        if (!hasGun) {
+            dashController.enabled = false;
+            teleportationController.enabled = false;
+            uiController.SendMessage("HideAbilities");
+        }
+    }
+
+    private void GunPickedUp() {
+        hasGun = true;
+        Gun.SetActive(hasGun);
+        uiController.SendMessage("ShowAbilities");
+        dashController.enabled = true;
+        teleportationController.enabled = true;
     }
 }
