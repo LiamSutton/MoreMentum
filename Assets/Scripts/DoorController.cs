@@ -19,7 +19,6 @@ public class DoorController : MonoBehaviour
     void Update()
     {
         if (shouldHide) {
-            Debug.Log("HIDING DOOR");
             Hide();
         }
 
@@ -33,7 +32,7 @@ public class DoorController : MonoBehaviour
         transform.position = Vector3.MoveTowards(transform.position, endPointPosition, step);
     }
 
-    void H() {
+    void TriggerHide() {
         shouldHide = true;
     }
 }

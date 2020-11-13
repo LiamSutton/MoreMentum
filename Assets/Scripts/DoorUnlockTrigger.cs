@@ -20,7 +20,7 @@ public class DoorUnlockTrigger : MonoBehaviour
 
     void OnTriggerEnter(Collider other) {
         if (other.gameObject.CompareTag("Player")) {
-            doorController.SendMessage("H");
+            doorController.SendMessage("TriggerHide");
         }
     }
 }
