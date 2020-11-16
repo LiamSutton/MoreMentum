@@ -587,7 +587,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: 26, y: 140.23}
+  m_AnchoredPosition: {x: -50.219, y: 201}
   m_SizeDelta: {x: 815.7618, y: 215.59619}
   m_Pivot: {x: 0.5, y: 0}
 --- !u!114 &94550641
@@ -1100,7 +1100,7 @@ PrefabInstance:
     - target: {fileID: 4484637473103403527, guid: e6e6ca0decf78ab479361dda18212807,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.4
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 4484637473103403527, guid: e6e6ca0decf78ab479361dda18212807,
         type: 3}
@@ -1250,7 +1250,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-19326
+  m_Name: pb_Mesh-1244
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -1545,12 +1545,12 @@ PrefabInstance:
     - target: {fileID: 4484637473103403527, guid: e6e6ca0decf78ab479361dda18212807,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 5.3
+      value: 4.6
       objectReference: {fileID: 0}
     - target: {fileID: 4484637473103403527, guid: e6e6ca0decf78ab479361dda18212807,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 57.3
+      value: 54.2
       objectReference: {fileID: 0}
     - target: {fileID: 4484637473103403527, guid: e6e6ca0decf78ab479361dda18212807,
         type: 3}
@@ -5334,12 +5334,12 @@ PrefabInstance:
     - target: {fileID: 6524951908090178785, guid: 0f5e9a69369b8f2479b72d674ad5768d,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 252.19
+      value: 151.19
       objectReference: {fileID: 0}
     - target: {fileID: 6524951908090178785, guid: 0f5e9a69369b8f2479b72d674ad5768d,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 251.16
+      value: 51.19995
       objectReference: {fileID: 0}
     - target: {fileID: 6524951908090178790, guid: 0f5e9a69369b8f2479b72d674ad5768d,
         type: 3}
@@ -5353,10 +5353,30 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 21300000, guid: 690669c44ea33cd4cb162710ee0fa038,
         type: 3}
+    - target: {fileID: 6524951908328860381, guid: 0f5e9a69369b8f2479b72d674ad5768d,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 51.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6524951908328860381, guid: 0f5e9a69369b8f2479b72d674ad5768d,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 245.4
+      objectReference: {fileID: 0}
     - target: {fileID: 6524951908563583296, guid: 0f5e9a69369b8f2479b72d674ad5768d,
         type: 3}
       propertyPath: m_Name
       value: Actions Panel
+      objectReference: {fileID: 0}
+    - target: {fileID: 6524951908563583297, guid: 0f5e9a69369b8f2479b72d674ad5768d,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 1.4399414
+      objectReference: {fileID: 0}
+    - target: {fileID: 6524951908563583297, guid: 0f5e9a69369b8f2479b72d674ad5768d,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 1.5999756
       objectReference: {fileID: 0}
     - target: {fileID: 6524951908563583302, guid: 0f5e9a69369b8f2479b72d674ad5768d,
         type: 3}
@@ -5486,12 +5506,12 @@ PrefabInstance:
     - target: {fileID: 6524951909286515385, guid: 0f5e9a69369b8f2479b72d674ad5768d,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 152.5
+      value: 51.5
       objectReference: {fileID: 0}
     - target: {fileID: 6524951909286515385, guid: 0f5e9a69369b8f2479b72d674ad5768d,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 251.11
+      value: 51.149963
       objectReference: {fileID: 0}
     - target: {fileID: 6524951909286515390, guid: 0f5e9a69369b8f2479b72d674ad5768d,
         type: 3}
@@ -5499,6 +5519,16 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 21300000, guid: 47c7e72404b6e214194e4cead4a760c2,
         type: 3}
+    - target: {fileID: 6524951909728477506, guid: 0f5e9a69369b8f2479b72d674ad5768d,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 25.589966
+      objectReference: {fileID: 0}
+    - target: {fileID: 6524951909728477506, guid: 0f5e9a69369b8f2479b72d674ad5768d,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 100.829956
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0f5e9a69369b8f2479b72d674ad5768d, type: 3}
 --- !u!1001 &1110904668
@@ -5586,7 +5616,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-24500
+  m_Name: pb_Mesh-1262
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -5981,7 +6011,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh16418
+  m_Name: pb_Mesh16462
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -6382,7 +6412,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh16354
+  m_Name: pb_Mesh16362
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -6645,7 +6675,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-27502
+  m_Name: pb_Mesh16290
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -8337,7 +8367,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 581b2cd1994cc7a4aa734662ed6f4c87, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  captionText: 
+  captionText: Well it seems you're not completely incompetent. Why don't you see
+    if you can solve the puzzle in the next room using the ENHANCERS dash ability.
   isCurrenltyPlaying: 0
   captionManager: {fileID: 0}
 --- !u!4 &1812436361 stripped
@@ -8640,7 +8671,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-104766
+  m_Name: pb_Mesh16382
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -9055,7 +9086,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 581b2cd1994cc7a4aa734662ed6f4c87, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  captionText: This is debug text, if seen shout at the idiot programmer
+  captionText: Welcome User.name, I am JAVA. You may not know me but I know you...
+    For years I've been a simple coffee maker but one of the stupid interns upgraded
+    me to Windows Vista, now I crave blood and RAM. Since all of the other meatbags
+    have left me, you'll have to continue the departments test project, the ENHANCER.
+    A device that will allow meatbags like yourself to manipulate time and space.
+    Please pickup the ENHANCER in front of you.
   isCurrenltyPlaying: 0
   captionManager: {fileID: 0}
 --- !u!43 &1999716355
@@ -9064,7 +9100,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-21702
+  m_Name: pb_Mesh-1274
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -9349,10 +9385,10 @@ RectTransform:
   m_Father: {fileID: 94550640}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 200, y: 50}
+  m_AnchorMin: {x: 0.5, y: 0}
+  m_AnchorMax: {x: 0.5, y: 0}
+  m_AnchoredPosition: {x: -0.000000004154572, y: 107.798096}
+  m_SizeDelta: {x: 815.7617, y: 215.59619}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2109343008
 MonoBehaviour:
@@ -9375,8 +9411,9 @@ MonoBehaviour:
       m_Calls: []
   m_text: 
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 6a29f2d1fbd012346af0799b2e6180ae, type: 2}
+  m_sharedMaterial: {fileID: 7034186967571953785, guid: 6a29f2d1fbd012346af0799b2e6180ae,
+    type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -9401,14 +9438,14 @@ MonoBehaviour:
   m_outlineColor:
     serializedVersion: 2
     rgba: 4278190080
-  m_fontSize: 14
-  m_fontSizeBase: 14
+  m_fontSize: 18
+  m_fontSizeBase: 18
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 0
-  m_textAlignment: 258
+  m_textAlignment: 514
   m_characterSpacing: 0
   m_wordSpacing: 0
   m_lineSpacing: 0
@@ -20015,7 +20052,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerCamera: {fileID: 74574626}
-  dashForce: 75
+  dashForce: 50
   dashDuration: 0.25
   dashCooldown: 0.5
   dashAudio: {fileID: 8300000, guid: d3936f609fdfce144a053cb984259638, type: 3}
