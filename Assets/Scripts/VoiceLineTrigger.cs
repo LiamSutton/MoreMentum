@@ -5,11 +5,15 @@ using UnityEngine;
 public class VoiceLineTrigger : MonoBehaviour
 {
     private AudioClip voiceLine;
+    public string captionText;
     public bool isCurrenltyPlaying;
+
+    public CaptionManager captionManager;
 
     public void Awake()
     {
         voiceLine = GetComponent<AudioSource>().clip;
+        captionManager = GameObject.Find("Caption Panel").GetComponent<CaptionManager>();
     }
     // When the player enters the trigger, play the voice line associated with it.
     public void OnTriggerEnter(Collider other)
@@ -27,6 +31,7 @@ public class VoiceLineTrigger : MonoBehaviour
 
     public IEnumerator PlayVoiceLine()
     {
+        StartCoroutine(captionManager.ShowCaption(captionText, voiceLine.length));
         isCurrenltyPlaying = true;
         GetComponent<AudioSource>().PlayOneShot(voiceLine);
         yield return new WaitWhile(() => GetComponent<AudioSource>().isPlaying);
