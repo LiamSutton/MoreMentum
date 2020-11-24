@@ -169,7 +169,6 @@ public class PlayerController : MonoBehaviour
             jumpController.SendMessage("ResetJump");
             pickupManager.SendMessage("ResetAllPickups");
             isGrounded = true;
-            Debug.Log("RETURNED TO GROUND AT: " + Time.time.ToString());
         }
     }
 
@@ -185,13 +184,13 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    // TODO: THIS IS CAUSING MAJOR ISSUES WITH ALLOWING A DOUBLE DASH FROM GROUND
     private void OnCollisionStay(Collision other) {
         // TODO: This feels really janky, has to be a better way of doing this
         if (other.gameObject.CompareTag("Ground")) {
             isGrounded = true;
             jumpController.SendMessage("ResetJump");
             jumpController.SendMessage("ResetGrounded");
-            dashController.SendMessage("ResetDash");
         }
     }
 

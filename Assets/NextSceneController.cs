@@ -22,12 +22,7 @@ public class NextSceneController : MonoBehaviour
     IEnumerator LoadNextScene()
     {
         int sceneIndex = SceneManager.GetActiveScene().buildIndex;
-
-        // if (sceneIndex < SceneManager.sceneCount - 1)
-        // {
-            // SceneManager.LoadScene(sceneIndex + 1);
-        // }
         yield return new WaitForSeconds(loadDelay);
-        SceneManager.LoadScene(sceneIndex);
+        SceneManager.LoadScene(sceneIndex+1);
     }
 }
