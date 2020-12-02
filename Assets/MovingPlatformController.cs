@@ -16,7 +16,7 @@ public class MovingPlatformController : MonoBehaviour
 
     void Awake()
     {
-        endPoint = transform.Find("RightPosition");
+        endPoint = transform.Find("EndPosition");
         startPoint = transform;
         startPointVec = transform.position;
         endPointVec = endPoint.position;
