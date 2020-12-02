@@ -9,37 +9,45 @@ public class MovingPlatformController : MonoBehaviour
     private Vector3 startPointVec;
     private Vector3 endPointVec;
 
-    public float speed = 0.5f;
+    public float speed;
 
-    public bool isTravelingToEndPoint = true;
+    public bool isTravelingToEndPoint;
 
     void Awake() {
-        endPoint = transform.Find("End Point");
-        Debug.Log(endPoint != null);
+        endPoint = transform.Find("RightPosition");
         startPoint = transform;
         startPointVec = transform.position;
         endPointVec = endPoint.position;
-        Debug.Log(endPoint.ToString());
+        
     }
     void Update()
     {
-        if (transform.position.x == endPoint.position.x) {
-            isTravelingToEndPoint = false;
-        }
+        float step = speed * Time.deltaTime;
 
-        if (transform.position.x == startPoint.position.x) {
-            isTravelingToEndPoint = true;
-        }
-
-         float step = speed * Time.deltaTime;
-        if (isTravelingToEndPoint) {
-            transform.position = Vector3.MoveTowards(transform.position, endPointVec, step);
-        }
-        else {
-            transform.position = Vector3.MoveTowards(transform.position, startPointVec, step);
-        }
+       if (isTravelingToEndPoint) {
+           if (transform.position != endPointVec) {
+               transform.position = Vector3.MoveTowards(transform.position, endPointVec, step);
+           }
+           else {
+               isTravelingToEndPoint = false;
+           }
+       }
+       else {
+           if (transform.position == startPointVec) {
+               isTravelingToEndPoint = true;
+           } else {
+               transform.position = Vector3.MoveTowards(transform.position, startPointVec, step);
+           }
+       }
+        // if (isTravelingToEndPoint) {
+            
+        // }
+        // else {
+        //     transform.position = Vector3.MoveTowards(transform.position, startPointVec, step);
+        // }
         
        
         
     }
 }
+// transform.position = Vector3.MoveTowards(transform.position, startPointVec, step);
