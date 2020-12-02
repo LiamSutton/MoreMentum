@@ -32,8 +32,8 @@ public class VoiceLineTrigger : MonoBehaviour
     public IEnumerator PlayVoiceLine()
     {
         // TODO: Maybe use send message for this?
-        StartCoroutine(captionManager.ShowCaption(captionText, voiceLine.length));
-        
+        // StartCoroutine(captionManager.ShowCaption(captionText, voiceLine.length));
+        captionManager.SendMessage("HandleCaption", new CaptionManager.CaptionOptions(captionText, voiceLine.length));
         isCurrenltyPlaying = true;
         GetComponent<AudioSource>().PlayOneShot(voiceLine);
         yield return new WaitWhile(() => GetComponent<AudioSource>().isPlaying);

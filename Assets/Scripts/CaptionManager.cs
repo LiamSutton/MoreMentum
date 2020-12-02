@@ -9,18 +9,40 @@ public class CaptionManager : MonoBehaviour
     // Start is called before the first frame update
     public GameObject panel;
     public TMP_Text caption;
-    void Awake()
-    {
-        // panel = GameObject.Find("Caption Panel");
-        // caption = GameObject.Find("Caption Text").GetComponent<TMP_Text>();
+    public bool currentlyDisplaying = false;
+    public class CaptionOptions {
+        public string captionText;
+        public float time;
+
+        public CaptionOptions() {
+
+        }
+            
+        public CaptionOptions(string captionText, float time) {
+            this.captionText = captionText;
+            this.time = time;
+        }
+    }
+    public IEnumerator ShowCaption(CaptionOptions options) {
+        currentlyDisplaying = true;
+
+        caption.SetText(options.captionText);
+
+        panel.SetActive(true);
+
+        yield return new WaitForSeconds(options.time);
+
+        caption.SetText(string.Empty);
+
+        panel.SetActive(false);
+
+        currentlyDisplaying = false;
     }
 
-    // Update is called once per frame
-    public IEnumerator ShowCaption(string captionText, float time) {
-        caption.SetText(captionText);
-        panel.SetActive(true);
-        yield return new WaitForSeconds(time);
-        caption.SetText(string.Empty);
-        panel.SetActive(false);
-    } 
+    public void HandleCaption(CaptionOptions options) {
+        if (currentlyDisplaying) {
+            StopAllCoroutines();
+        }
+        StartCoroutine("ShowCaption", options);
+    }
 }
