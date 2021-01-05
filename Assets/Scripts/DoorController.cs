@@ -4,17 +4,24 @@ using UnityEngine;
 
 public class DoorController : MonoBehaviour
 {
+    Transform startPoint;
     Transform endPoint;
     Vector3 endPointPosition;
-    public bool shouldHide = false;
 
+    public AudioClip clip;
+    // AudioSource source;
+    public bool shouldHide = false;
     public bool isElavator = false;
+
+    public bool clipPlayed = false;
     public float speed = 0.5f;
     void Start()
     {
         endPoint = transform.Find("End Point");
         endPointPosition = endPoint.transform.position;
-        Debug.Log(endPointPosition);
+        startPoint = transform;
+    //     source = GetComponent<AudioSource>();
+    //     clip = source.clip;
     }
 
     // Update is called once per frame
@@ -36,6 +43,11 @@ public class DoorController : MonoBehaviour
 
     void Hide()
     {
+        if (!clipPlayed) {
+            clipPlayed = true;
+            AudioSource.PlayClipAtPoint(clip, startPoint.position);
+        }
+        
         float step = speed * Time.deltaTime;
         transform.position = Vector3.MoveTowards(transform.position, endPointPosition, step);
     }

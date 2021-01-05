@@ -27,7 +27,3 @@ public class NextSceneController : MonoBehaviour
         SceneManager.LoadScene(sceneIndex+1);
     }
 }
-
-/*
-We're nearing the end of the tests, after you've finished this one, I'll show you to the EXIT.
-*/

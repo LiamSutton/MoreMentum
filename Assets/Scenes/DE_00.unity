@@ -6204,6 +6204,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ba4e8c7701f88184a8a30cb4abf9efde, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  clip: {fileID: 8300000, guid: 916155e443e68b04cbf7b58377a4f2cd, type: 3}
   shouldHide: 0
   isElavator: 0
   speed: 4
@@ -11319,6 +11320,11 @@ PrefabInstance:
       propertyPath: m_Mesh
       value: 
       objectReference: {fileID: 885522012}
+    - target: {fileID: 7247591666899330604, guid: 2ac5271155245d04b87a74898b822781,
+        type: 3}
+      propertyPath: clip
+      value: 
+      objectReference: {fileID: 8300000, guid: 916155e443e68b04cbf7b58377a4f2cd, type: 3}
     - target: {fileID: 7247591666899330606, guid: 2ac5271155245d04b87a74898b822781,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -11334,7 +11340,8 @@ PrefabInstance:
       propertyPath: m_Mesh
       value: 
       objectReference: {fileID: 197443277}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 7739549876141131697, guid: 2ac5271155245d04b87a74898b822781, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 2ac5271155245d04b87a74898b822781, type: 3}
 --- !u!1001 &3413113960227724731
 PrefabInstance:
@@ -12189,6 +12196,11 @@ PrefabInstance:
       propertyPath: m_Mesh
       value: 
       objectReference: {fileID: 1746111203}
+    - target: {fileID: 4019997454227703837, guid: 8eae72dbfd10f744ca415eb0b2efec91,
+        type: 3}
+      propertyPath: clip
+      value: 
+      objectReference: {fileID: 8300000, guid: 916155e443e68b04cbf7b58377a4f2cd, type: 3}
     - target: {fileID: 4019997454430954913, guid: 8eae72dbfd10f744ca415eb0b2efec91,
         type: 3}
       propertyPath: m_Name
@@ -12259,7 +12271,8 @@ PrefabInstance:
       propertyPath: m_Mesh
       value: 
       objectReference: {fileID: 1338803058}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 7640772513119426523, guid: 8eae72dbfd10f744ca415eb0b2efec91, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 8eae72dbfd10f744ca415eb0b2efec91, type: 3}
 --- !u!1 &6524951908191723513 stripped
 GameObject:
