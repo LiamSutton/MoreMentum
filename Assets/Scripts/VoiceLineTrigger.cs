@@ -8,6 +8,8 @@ public class VoiceLineTrigger : MonoBehaviour
     public string captionText;
     public bool isCurrenltyPlaying;
 
+    public float voiceLineVolume = 0.7f;
+
     public CaptionManager captionManager;
 
     public void Awake()
@@ -34,7 +36,7 @@ public class VoiceLineTrigger : MonoBehaviour
         // StartCoroutine(captionManager.ShowCaption(captionText, voiceLine.length));
         captionManager.SendMessage("HandleCaption", new CaptionManager.CaptionOptions(captionText, voiceLine.length));
         isCurrenltyPlaying = true;
-        GetComponent<AudioSource>().PlayOneShot(voiceLine);
+        GetComponent<AudioSource>().PlayOneShot(voiceLine, voiceLineVolume);
         yield return new WaitWhile(() => GetComponent<AudioSource>().isPlaying);
         isCurrenltyPlaying = false;
     }

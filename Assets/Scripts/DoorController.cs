@@ -45,7 +45,7 @@ public class DoorController : MonoBehaviour
     {
         if (!clipPlayed) {
             clipPlayed = true;
-            AudioSource.PlayClipAtPoint(clip, startPoint.position);
+            AudioSource.PlayClipAtPoint(clip, startPoint.position, 2f);
         }
         
         float step = speed * Time.deltaTime;
