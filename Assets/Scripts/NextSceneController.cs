@@ -27,3 +27,10 @@ public class NextSceneController : MonoBehaviour
         SceneManager.LoadScene(sceneIndex+1);
     }
 }
+
+/*
+Bravo meatbag, you have proven again that youre not completely incompetent.
+Now let's turn the difficulty up. 
+To reach the end of this test, you will need to use everything you have learnt so far.
+Unlike your parents, I have at least 0.0001% faith you can do it.
+*/

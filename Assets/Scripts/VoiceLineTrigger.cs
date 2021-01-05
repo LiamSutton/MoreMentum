@@ -13,7 +13,6 @@ public class VoiceLineTrigger : MonoBehaviour
     public void Awake()
     {
         voiceLine = GetComponent<AudioSource>().clip;
-        captionManager = GameObject.Find("Caption Panel").GetComponent<CaptionManager>();
     }
     // When the player enters the trigger, play the voice line associated with it.
     public void OnTriggerEnter(Collider other)
