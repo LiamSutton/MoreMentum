@@ -29,8 +29,5 @@ public class NextSceneController : MonoBehaviour
 }
 
 /*
-Bravo meatbag, you have proven again that youre not completely incompetent.
-Now let's turn the difficulty up. 
-To reach the end of this test, you will need to use everything you have learnt so far.
-Unlike your parents, I have at least 0.0001% faith you can do it.
+We're nearing the end of the tests, after you've finished this one, I'll show you to the EXIT.
 */
