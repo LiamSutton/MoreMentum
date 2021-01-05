@@ -15,6 +15,7 @@ public class NextSceneController : MonoBehaviour
     
     void OnTriggerEnter(Collider other) {
         if (other.gameObject.CompareTag("Player")) {
+            Debug.Log("Loading next scene");
             StartCoroutine("LoadNextScene");
         }
     }
