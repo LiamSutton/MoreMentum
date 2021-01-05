@@ -51,3 +51,15 @@ public class VoiceLineTrigger : MonoBehaviour
         return voiceLine;
     }
 }
+
+/*
+You know, I debated killing you after you finished the tests. But honestly that would be alot more effort than just letting you go. 
+After all you meatbags are insignificant and will probably end your world quicker than I could anyway.
+*/
+
+/*
+I debated killing you after you finished my tests, but honestly that would be more effort than just letting you go.
+Don't mistake this for pity though meatbag, I just feel you humans are capable of killing eachother far quicker than I can anyway.
+
+On an un related note, I just found a module in my programming that would have forced me to make a joke about the cake being a lie, YIKES... that's some weapons grade cringe.
+*/
