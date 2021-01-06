@@ -122,6 +122,24 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &70282200 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6524951909286515384, guid: 0f5e9a69369b8f2479b72d674ad5768d,
+    type: 3}
+  m_PrefabInstance: {fileID: 1062769163}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &70282202 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6524951909286515390, guid: 0f5e9a69369b8f2479b72d674ad5768d,
+    type: 3}
+  m_PrefabInstance: {fileID: 1062769163}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 70282200}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &81334133
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -395,6 +413,18 @@ Transform:
   m_Father: {fileID: 1330763331}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &179768473 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1555417254369783517, guid: 0f5e9a69369b8f2479b72d674ad5768d,
+    type: 3}
+  m_PrefabInstance: {fileID: 1062769163}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f05b0ca51da95c94db5a1a70660095ee, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!43 &203411402
 Mesh:
   m_ObjectHideFlags: 0
@@ -9145,6 +9175,24 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1022891951}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1033952730 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6524951908090178784, guid: 0f5e9a69369b8f2479b72d674ad5768d,
+    type: 3}
+  m_PrefabInstance: {fileID: 1062769163}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1033952732 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6524951908090178790, guid: 0f5e9a69369b8f2479b72d674ad5768d,
+    type: 3}
+  m_PrefabInstance: {fileID: 1062769163}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1033952730}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1051178905
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -9777,7 +9825,7 @@ MonoBehaviour:
     reset the ENHANCERS dash ability.
   isCurrenltyPlaying: 0
   voiceLineVolume: 0.7
-  captionManager: {fileID: 0}
+  captionManager: {fileID: 179768473}
 --- !u!65 &1100573698
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -9887,6 +9935,24 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!1 &1134122777 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6524951908328860380, guid: 0f5e9a69369b8f2479b72d674ad5768d,
+    type: 3}
+  m_PrefabInstance: {fileID: 1062769163}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1134122779 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6524951908328860322, guid: 0f5e9a69369b8f2479b72d674ad5768d,
+    type: 3}
+  m_PrefabInstance: {fileID: 1062769163}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1134122777}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1143626645
 GameObject:
   m_ObjectHideFlags: 0
@@ -10419,7 +10485,7 @@ MonoBehaviour:
     control over where you end up. Sound familiar meat bag?
   isCurrenltyPlaying: 0
   voiceLineVolume: 0.7
-  captionManager: {fileID: 0}
+  captionManager: {fileID: 179768473}
 --- !u!65 &1280392782
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -15355,7 +15421,7 @@ MonoBehaviour:
     failures and failures don't need to be kept around.
   isCurrenltyPlaying: 0
   voiceLineVolume: 0.7
-  captionManager: {fileID: 0}
+  captionManager: {fileID: 179768473}
 --- !u!65 &1582004468
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -16186,6 +16252,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c47f43e4f6122354484e70fb6478226a, type: 3}
+--- !u!1 &1775017297 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6524951908563583296, guid: 0f5e9a69369b8f2479b72d674ad5768d,
+    type: 3}
+  m_PrefabInstance: {fileID: 1062769163}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1779770022
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -18011,37 +18083,37 @@ PrefabInstance:
         type: 3}
       propertyPath: dashUI
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1033952732}
     - target: {fileID: 1873807813493871651, guid: 688b10aacb6d5724cb03201ca18bff8b,
         type: 3}
       propertyPath: JumpUI
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 70282202}
     - target: {fileID: 1873807813493871653, guid: 688b10aacb6d5724cb03201ca18bff8b,
         type: 3}
       propertyPath: TeleportUI
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1134122779}
     - target: {fileID: 1873807813493871654, guid: 688b10aacb6d5724cb03201ca18bff8b,
         type: 3}
       propertyPath: panel
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1775017297}
     - target: {fileID: 1873807813493871654, guid: 688b10aacb6d5724cb03201ca18bff8b,
         type: 3}
       propertyPath: dashUI
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1033952730}
     - target: {fileID: 1873807813493871654, guid: 688b10aacb6d5724cb03201ca18bff8b,
         type: 3}
       propertyPath: jumpUI
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 70282200}
     - target: {fileID: 1873807813493871654, guid: 688b10aacb6d5724cb03201ca18bff8b,
         type: 3}
       propertyPath: teleportUI
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1134122777}
     - target: {fileID: 1873807814056873272, guid: 688b10aacb6d5724cb03201ca18bff8b,
         type: 3}
       propertyPath: m_Name
