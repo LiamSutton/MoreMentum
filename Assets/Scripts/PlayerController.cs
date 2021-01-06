@@ -110,7 +110,6 @@ public class PlayerController : MonoBehaviour
             sfxPlayer.SendMessage("PlayFootsteps");
         }
     }
-
     private void MoveCamera()
     {
         float mouseX = Input.GetAxis("Mouse X") * mouseSensitivity * Time.fixedDeltaTime * sensitivityMultiplier;
