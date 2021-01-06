@@ -12,21 +12,25 @@ public class PauseMenuController : MonoBehaviour
 
 
 
-    void Start() {
+    void Start()
+    {
     }
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Escape)) {
-            if (gameIsPaused) {
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            if (gameIsPaused)
+            {
                 Resume();
             }
-            else {
+            else
+            {
                 Pause();
             }
         }
     }
 
-    public void Pause() 
+    public void Pause()
     {
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
@@ -37,7 +41,9 @@ public class PauseMenuController : MonoBehaviour
         gameIsPaused = true;
     }
 
-    public void Resume() {
+    public void Resume()
+    {
+        Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
         player.GetComponent<PlayerController>().enabled = true;
         pauseMenuUI.SetActive(false);
@@ -46,13 +52,15 @@ public class PauseMenuController : MonoBehaviour
         gameIsPaused = false;
     }
 
-    public void MainMenu() {
+    public void MainMenu()
+    {
         SceneManager.LoadScene(0);
         Time.timeScale = 1f;
         gameIsPaused = false;
     }
 
-    public void ExitGame() {
+    public void ExitGame()
+    {
         Application.Quit();
     }
 }
