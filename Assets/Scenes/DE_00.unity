@@ -11120,7 +11120,7 @@ PrefabInstance:
     - target: {fileID: 126250608893666139, guid: 9467cc1718c445449a37b21859a2b434,
         type: 3}
       propertyPath: m_PlayOnAwake
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 126250608893666139, guid: 9467cc1718c445449a37b21859a2b434,
         type: 3}
@@ -11275,6 +11275,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: UI
+      objectReference: {fileID: 0}
+    - target: {fileID: 5101503588111025042, guid: 6545503110ae1344c84b85b18c54494c,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6545503110ae1344c84b85b18c54494c, type: 3}
