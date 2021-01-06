@@ -27,3 +27,11 @@ public class UIController : MonoBehaviour
         panel.GetComponent<RectTransform>().sizeDelta = new Vector2(300, 100);
     }
 }
+
+
+/*
+CANVAS POSITIONS:
+JUMP UI: 51.5, 51
+DASH UI: 151.5, 51
+TELEPORT UI: 251.5, 51
+*/
