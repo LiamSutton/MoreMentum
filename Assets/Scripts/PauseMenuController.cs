@@ -10,10 +10,16 @@ public class PauseMenuController : MonoBehaviour
     public GameObject gameOverlayUI;
     public GameObject player;
 
+    AudioSource audioSource;
+
+    AudioClip buttonClickSound;
+
 
 
     void Start()
     {
+        audioSource = GetComponent<AudioSource>();
+        buttonClickSound = audioSource.clip;
     }
     void Update()
     {
@@ -62,5 +68,10 @@ public class PauseMenuController : MonoBehaviour
     public void ExitGame()
     {
         Application.Quit();
+    }
+
+    public void PlayButtonClickSound()
+    {
+        audioSource.PlayOneShot(buttonClickSound);
     }
 }
