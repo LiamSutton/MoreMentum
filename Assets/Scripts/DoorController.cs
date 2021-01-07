@@ -8,8 +8,8 @@ public class DoorController : MonoBehaviour
     Transform endPoint;
     Vector3 endPointPosition;
 
-    public AudioClip clip;
-    // AudioSource source;
+    AudioClip clip;
+    AudioSource source;
     public bool shouldHide = false;
     public bool isElavator = false;
 
@@ -20,8 +20,8 @@ public class DoorController : MonoBehaviour
         endPoint = transform.Find("End Point");
         endPointPosition = endPoint.transform.position;
         startPoint = transform;
-    //     source = GetComponent<AudioSource>();
-    //     clip = source.clip;
+        source = GetComponent<AudioSource>();
+        clip = source.clip;
     }
 
     // Update is called once per frame
@@ -45,7 +45,7 @@ public class DoorController : MonoBehaviour
     {
         if (!clipPlayed) {
             clipPlayed = true;
-            AudioSource.PlayClipAtPoint(clip, startPoint.position, 2f);
+            source.PlayOneShot(clip);
         }
         
         float step = speed * Time.deltaTime;

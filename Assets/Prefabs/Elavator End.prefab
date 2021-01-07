@@ -316,7 +316,7 @@ GameObject:
   - component: {fileID: 4019997454227703839}
   - component: {fileID: 4019997454227703838}
   - component: {fileID: 4019997454227703837}
-  - component: {fileID: 7640772513119426523}
+  - component: {fileID: 7790919213550406582}
   m_Layer: 0
   m_Name: Elavator Door
   m_TagString: Untagged
@@ -412,12 +412,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ba4e8c7701f88184a8a30cb4abf9efde, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  clip: {fileID: 0}
   shouldHide: 0
   isElavator: 1
   clipPlayed: 0
   speed: 4
---- !u!82 &7640772513119426523
+--- !u!82 &7790919213550406582
 AudioSource:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -426,10 +425,11 @@ AudioSource:
   m_GameObject: {fileID: 4019997454227703824}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: -4222553731143476196, guid: b55ee57361f04ca4d8f5ea2f90f58976,
+    type: 2}
   m_audioClip: {fileID: 8300000, guid: 916155e443e68b04cbf7b58377a4f2cd, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0.6
   m_Pitch: 1
   Loop: 0
   Mute: 0
